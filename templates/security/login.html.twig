@@ -1,9 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.auth.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Login{% endblock %}
 
-{% block body %}
-<form method="post">
+{% block auth_title %}
+    Login
+{% endblock %}
+
+{% block auth_content %}
+    <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -14,21 +18,34 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
-
-    <div class="checkbox mb-3">
+    <div class="form-floating mb-3">
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="name@example.com" />
+        <label for="inputEmail">Email</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Password" required>
+        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+        <label for="inputPassword">Password</label>
+    </div>
+    <div class="form-check mb-3">
         <label>
             <input type="checkbox" name="_remember_me"> Remember me
         </label>
     </div>
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+        <a class="small" href="#">Forgot Password?</a>
+        <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+    </div>
 </form>
+
+{% endblock %}
+
+{% block auth_footer %}
+    <div class="card-footer text-center py-3">
+        <div class="small">
+            <a href="{{ path('app_register') }}">
+                Need an account? Sign up!
+            </a>
+        </div>
+    </div>
 {% endblock %}

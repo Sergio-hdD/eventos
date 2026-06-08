@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<body class="sb-nav-fixed">
+
+    {% include 'layout/navbar.html.twig' %}
+
+    <div id="layoutSidenav">
+
+        {% include 'layout/sidebar.html.twig' %}
+
+        <div id="layoutSidenav_content">
+
+            <main>
+
+                <div class="container-fluid px-4">
+
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
+                    {% block content %}{% endblock %}
+
+                </div>
+
+            </main>
+
+            {% include 'layout/footer.html.twig' %}
+
+        </div>
+
+    </div>
+
+{% endblock %}

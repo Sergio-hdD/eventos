@@ -1,19 +1,86 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.auth.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Registro{% endblock %}
 
-{% block body %}
-    <h1>Register</h1>
+{% block auth_column %}
+    col-lg-7
+{% endblock %}
 
-    {{ form_errors(registrationForm) }}
+{% block auth_title %}
+    Crear cuenta
+{% endblock %}
 
+{% block auth_content %}
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+    <div class="form-floating mb-3">
+        {{ form_widget(registrationForm.email, {
+            attr: {
+                class: 'form-control',
+                placeholder: 'name@example.com'
+            }
+        }) }}
+        {{ form_label(registrationForm.email, 'Email') }}
+        {{ form_errors(registrationForm.email) }}
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="form-floating mb-3 mb-md-0">
+                {{ form_widget(registrationForm.plainPassword.first, {
+                    attr: {
+                        class: 'form-control',
+                        placeholder: 'Contraseña'
+                    }
+                }) }}
+                {{ form_label(registrationForm.plainPassword.first, 'Contraseña') }}
+                {{ form_errors(registrationForm.plainPassword.first) }}
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-floating mb-3 mb-md-0">
+                {{ form_widget(registrationForm.plainPassword.second, {
+                    attr: {
+                        class: 'form-control',
+                        placeholder: 'Confirmar contraseña'
+                    }
+                }) }}
+                {{ form_label(registrationForm.plainPassword.second, 'Confirmar contraseña') }}
+                {{ form_errors(registrationForm.plainPassword.second) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-check mb-3">
+        {{ form_widget(registrationForm.agreeTerms, {
+            attr: {
+                class: 'form-check-input'
+            }
+        }) }}
+
+        {{ form_label(registrationForm.agreeTerms, null, {
+            label_attr: {
+                class: 'form-check-label'
+            }
+        }) }}
+    </div>
+
+    <div class="d-grid">
+        <button class="btn btn-primary btn-lg">
+            Crear cuenta
+        </button>
+    </div>
+
     {{ form_end(registrationForm) }}
+{% endblock %}
+
+{% block auth_footer %}
+    <div class="card-footer text-center py-3">
+        <div class="small">
+            <a href="{{ path('app_login') }}">
+                ¿Ya tenés cuenta? Iniciar sesión
+            </a>
+        </div>
+    </div>
 {% endblock %}

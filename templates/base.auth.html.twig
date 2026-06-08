@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        {% block title %}Eventos{% endblock %}
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{ encore_entry_link_tags('app') }}
+
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body class="bg-primary">
+
+    <div id="layoutAuthentication">
+
+        <div id="layoutAuthentication_content">
+
+            <main>
+
+                <div class="container">
+                    <h1 class="text-center text-white mt-4">Eventos</h1>
+                    <div class="row justify-content-center">
+
+                        <div class="{% block auth_column %}col-lg-5{% endblock %}">
+
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">
+                                        {% block auth_title %}{% endblock %}
+                                    </h3>
+                                </div>
+
+                                <div class="card-body">
+                                    {% block auth_content %}{% endblock %}
+                                </div>
+
+                                {% block auth_footer %}{% endblock %}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+        </div>
+
+        <div id="layoutAuthentication_footer">
+
+            {% include 'layout/footer.html.twig' %}
+
+        </div>
+
+    </div>
+
+    {{ encore_entry_script_tags('app') }}
+
+    {% block javascripts %}{% endblock %}
+
+</body>
+</html>
