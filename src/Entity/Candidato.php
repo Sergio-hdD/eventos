@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CandidatoRepository;
+use App\Traits\CamposBasicosTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -38,13 +39,12 @@ class Candidato
     private int $orden = 0;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
-
-    #[ORM\Column]
     private int $cantidadVotos = 0;
 
     #[ORM\OneToMany(mappedBy: 'candidato', targetEntity: Voto::class, orphanRemoval: true)]
     private Collection $votos;
+
+    use CamposBasicosTrait;
 
     public function __construct()
     {
@@ -136,18 +136,6 @@ class Candidato
     public function setOrden(int $orden): static
     {
         $this->orden = $orden;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ParticipanteRepository;
+use App\Traits\CamposBasicosTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ParticipanteRepository::class)]
@@ -36,8 +37,7 @@ class Participante
     #[ORM\Column(length: 20)]
     private ?string $rol = self::ROL_INVITADO;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    use CamposBasicosTrait;
 
     public function getId(): ?int
     {
@@ -83,13 +83,6 @@ class Participante
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
     }
 
     public function esOrganizador(): bool

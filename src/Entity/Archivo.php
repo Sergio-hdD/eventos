@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ArchivoRepository;
+use App\Traits\CamposBasicosTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArchivoRepository::class)]
@@ -54,8 +55,7 @@ class Archivo
     #[ORM\Column(nullable: true)]
     private ?int $duracion = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    use CamposBasicosTrait;
 
     public function getId(): ?int
     {
@@ -206,18 +206,6 @@ class Archivo
     public function setDuracion(?int $duracion): self
     {
         $this->duracion = $duracion;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }

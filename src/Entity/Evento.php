@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EventoRepository;
+use App\Traits\CamposBasicosTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -45,12 +46,6 @@ class Evento
     #[ORM\JoinColumn(nullable: false)]
     private ?User $organizador = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
-
     #[ORM\OneToMany(mappedBy: 'evento', targetEntity: Archivo::class, orphanRemoval: true)]
     private Collection $archivos;
 
@@ -62,6 +57,8 @@ class Evento
 
     #[ORM\OneToMany(mappedBy: 'evento', targetEntity: Voto::class, orphanRemoval: true)]
     private Collection $votos;
+
+    use CamposBasicosTrait;
 
     public function __construct()
     {
@@ -156,28 +153,6 @@ class Evento
     public function setOrganizador(?User $organizador): self
     {
         $this->organizador = $organizador;
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
         return $this;
     }
 
