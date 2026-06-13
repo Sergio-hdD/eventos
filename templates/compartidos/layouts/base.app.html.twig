@@ -1,14 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'compartidos/layouts/base.html.twig' %}
 
 {% block body %}
 
 <body class="sb-nav-fixed">
 
-    {% include 'layout/navbar.html.twig' %}
+    {% include 'compartidos/partials/navbar.html.twig' %}
 
     <div id="layoutSidenav">
 
-        {% include 'layout/sidebar.html.twig' %}
+        {% include 'compartidos/partials/sidebar.html.twig' %}
 
         <div id="layoutSidenav_content">
 
@@ -30,7 +30,7 @@
 
             </main>
 
-            {% include 'layout/footer.html.twig' %}
+            {% include 'compartidos/partials/footer.html.twig' %}
 
         </div>
 
