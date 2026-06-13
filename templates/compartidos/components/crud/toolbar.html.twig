@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>{{ titulo_pagina|default('Sin título') }}</h2>
+
+    <div class="btn-group">
+        {% if path_to_return is defined %}
+            <a href="{{ path(path_to_return) }}" class="btn btn-secondary">
+                Volver
+            </a>
+        {% endif %}
+
+        {% if show_new_button ?? true %}
+            <a href="{{ path(objeto_nombre_path ~ '_new') }}" class="btn btn-success">
+                Nuevo
+            </a>
+        {% endif %}
+    </div>
+</div>

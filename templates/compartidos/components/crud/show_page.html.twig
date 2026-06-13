@@ -1,0 +1,15 @@
+{% extends 'compartidos/layouts/base.app.html.twig' %}
+
+{% block content %}
+
+    {% include 'compartidos/components/crud/toolbar.html.twig' %}
+
+    {% set content %}
+        {% block show_content %}{% endblock %}
+    {% endset %}
+
+    {% include 'compartidos/components/card.html.twig' with {
+        title: page_title,
+        content: content
+    } %}
+{% endblock %}
