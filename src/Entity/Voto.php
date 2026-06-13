@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\VotoRepository;
+use App\Traits\CamposBasicosTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VotoRepository::class)]
@@ -30,8 +31,7 @@ class Voto
     #[ORM\JoinColumn(nullable: false)]
     private ?Candidato $candidato = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    use CamposBasicosTrait;
 
     public function getId(): ?int
     {
@@ -70,18 +70,6 @@ class Voto
     public function setCandidato(?Candidato $candidato): static
     {
         $this->candidato = $candidato;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }

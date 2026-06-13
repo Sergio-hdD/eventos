@@ -25,20 +25,8 @@ class EventoType extends AbstractType
             ])
             ->add('tokenQr')
             ->add('estado')
-            ->add('createdAt')
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('activo')
             ->add('organizador', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
-            ->add('createdBy', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
-            ->add('updatedBy', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
             ])

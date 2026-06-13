@@ -25,27 +25,7 @@ class ArchivoType extends AbstractType
             ->add('ancho')
             ->add('alto')
             ->add('duracion')
-            ->add('createdAt')
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('activo')
-            ->add('evento', EntityType::class, [
-                'class' => Evento::class,
-                'choice_label' => 'id',
-            ])
-            ->add('usuario', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
-            ->add('createdBy', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
-            ->add('updatedBy', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
         ;
     }
 

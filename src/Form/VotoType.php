@@ -16,9 +16,6 @@ class VotoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('evento', EntityType::class, [
                 'class' => Evento::class,
                 'choice_label' => 'id',
@@ -31,6 +28,7 @@ class VotoType extends AbstractType
                 'class' => Candidato::class,
                 'choice_label' => 'id',
             ])
+            ->add('activo')
         ;
     }
 

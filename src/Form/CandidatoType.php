@@ -22,20 +22,8 @@ class CandidatoType extends AbstractType
             ->add('activo')
             ->add('orden')
             ->add('cantidadVotos')
-            ->add('createdAt')
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('evento', EntityType::class, [
                 'class' => Evento::class,
-                'choice_label' => 'id',
-            ])
-            ->add('createdBy', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
-            ->add('updatedBy', EntityType::class, [
-                'class' => User::class,
                 'choice_label' => 'id',
             ])
         ;

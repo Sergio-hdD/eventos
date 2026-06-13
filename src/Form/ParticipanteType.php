@@ -29,14 +29,6 @@ class ParticipanteType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'id',
             ])
-            ->add('createdBy', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
-            ->add('updatedBy', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
         ;
     }
 

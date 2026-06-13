@@ -15,6 +15,14 @@
                 <th>CreatedAt</th>
                 <td>{{ voto.createdAt ? voto.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ voto.updatedAt ? voto.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{ voto.activo ? 'Yes' : 'No' }}</td>
+            </tr>
         </tbody>
     </table>
 
