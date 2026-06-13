@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<title>Voto index</title>
+
+{% block body %}
+    <h1>Voto index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voto in votos %}
+            <tr>
+                <td>{{ voto.id }}</td>
+                <td>{{ voto.createdAt ? voto.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_voto_show', {'id': voto.id}) }}">show</a>
+                    <a href="{{ path('app_voto_edit', {'id': voto.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_voto_new') }}">Create new</a>
+{% endblock %}

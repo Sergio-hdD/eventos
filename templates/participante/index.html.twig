@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<title>Participante index</title>
+
+{% block body %}
+    <h1>Participante index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rol</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for participante in participantes %}
+            <tr>
+                <td>{{ participante.id }}</td>
+                <td>{{ participante.rol }}</td>
+                <td>{{ participante.createdAt ? participante.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ participante.updatedAt ? participante.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ participante.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_participante_show', {'id': participante.id}) }}">show</a>
+                    <a href="{{ path('app_participante_edit', {'id': participante.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_participante_new') }}">Create new</a>
+{% endblock %}

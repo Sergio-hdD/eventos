@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Voto</title>
+
+{% block body %}
+    <h1>Create new Voto</h1>
+
+    {{ include('voto/_form.html.twig') }}
+
+    <a href="{{ path('app_voto_index') }}">back to list</a>
+{% endblock %}

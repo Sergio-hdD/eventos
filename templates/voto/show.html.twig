@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<title>Voto</title>
+
+{% block body %}
+    <h1>Voto</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ voto.id }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ voto.createdAt ? voto.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_voto_index') }}">back to list</a>
+
+    <a href="{{ path('app_voto_edit', {'id': voto.id}) }}">edit</a>
+
+    {{ include('voto/_delete_form.html.twig') }}
+{% endblock %}

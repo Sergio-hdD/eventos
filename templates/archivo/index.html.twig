@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<title>Archivo index</title>
+
+{% block body %}
+    <h1>Archivo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NombreOriginal</th>
+                <th>NombreFisico</th>
+                <th>Ruta</th>
+                <th>MimeType</th>
+                <th>Extension</th>
+                <th>Tamano</th>
+                <th>Tipo</th>
+                <th>Ancho</th>
+                <th>Alto</th>
+                <th>Duracion</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for archivo in archivos %}
+            <tr>
+                <td>{{ archivo.id }}</td>
+                <td>{{ archivo.nombreOriginal }}</td>
+                <td>{{ archivo.nombreFisico }}</td>
+                <td>{{ archivo.ruta }}</td>
+                <td>{{ archivo.mimeType }}</td>
+                <td>{{ archivo.extension }}</td>
+                <td>{{ archivo.tamano }}</td>
+                <td>{{ archivo.tipo }}</td>
+                <td>{{ archivo.ancho }}</td>
+                <td>{{ archivo.alto }}</td>
+                <td>{{ archivo.duracion }}</td>
+                <td>{{ archivo.createdAt ? archivo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ archivo.updatedAt ? archivo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ archivo.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_archivo_show', {'id': archivo.id}) }}">show</a>
+                    <a href="{{ path('app_archivo_edit', {'id': archivo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_archivo_new') }}">Create new</a>
+{% endblock %}

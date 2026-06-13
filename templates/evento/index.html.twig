@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<title>Evento index</title>
+
+{% block body %}
+    <h1>Evento index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Slug</th>
+                <th>Descripcion</th>
+                <th>FechaInicio</th>
+                <th>FechaFin</th>
+                <th>TokenQr</th>
+                <th>Estado</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>Activo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evento in eventos %}
+            <tr>
+                <td>{{ evento.id }}</td>
+                <td>{{ evento.nombre }}</td>
+                <td>{{ evento.slug }}</td>
+                <td>{{ evento.descripcion }}</td>
+                <td>{{ evento.fechaInicio ? evento.fechaInicio|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ evento.fechaFin ? evento.fechaFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ evento.tokenQr }}</td>
+                <td>{{ evento.estado }}</td>
+                <td>{{ evento.createdAt ? evento.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ evento.updatedAt ? evento.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ evento.activo ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_evento_show', {'id': evento.id}) }}">show</a>
+                    <a href="{{ path('app_evento_edit', {'id': evento.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_evento_new') }}">Create new</a>
+{% endblock %}

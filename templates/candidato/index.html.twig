@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<title>Candidato index</title>
+
+{% block body %}
+    <h1>Candidato index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Foto</th>
+                <th>Descripcion</th>
+                <th>Activo</th>
+                <th>Orden</th>
+                <th>CantidadVotos</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for candidato in candidatos %}
+            <tr>
+                <td>{{ candidato.id }}</td>
+                <td>{{ candidato.nombre }}</td>
+                <td>{{ candidato.apellido }}</td>
+                <td>{{ candidato.foto }}</td>
+                <td>{{ candidato.descripcion }}</td>
+                <td>{{ candidato.activo ? 'Yes' : 'No' }}</td>
+                <td>{{ candidato.orden }}</td>
+                <td>{{ candidato.cantidadVotos }}</td>
+                <td>{{ candidato.createdAt ? candidato.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ candidato.updatedAt ? candidato.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_candidato_show', {'id': candidato.id}) }}">show</a>
+                    <a href="{{ path('app_candidato_edit', {'id': candidato.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_candidato_new') }}">Create new</a>
+{% endblock %}
